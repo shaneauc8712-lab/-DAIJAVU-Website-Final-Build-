@@ -40,8 +40,9 @@ export const COPY = {
 };
 
 export const ASSETS = {
-  logoLockup: "/assets/logo-lockup.png",
-  mascot: "/assets/mascot.png",
+  logoLockup: "/assets/DAIJAVU LOFGO.png",
+  logoIcon: "/assets/DAIJAVU ICON 2.png",
+  mascot: "/assets/KONG.png",
   heroAnimation: "/assets/kong-animation.mp4",
   wideVisual: "/assets/visual-strip.png",
 };

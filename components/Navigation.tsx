@@ -28,14 +28,7 @@ const Navigation: React.FC = () => {
           <img
             src={ASSETS.logoLockup}
             alt="Daijavu"
-            className="h-8 object-contain"
-            onError={(e) => {
-              // Fallback to gradient box if logo not found
-              e.currentTarget.style.display = 'none';
-              const fallback = document.createElement('div');
-              fallback.className = 'w-8 h-8 bg-gradient-to-br from-primary-cyan to-primary-purple rounded';
-              e.currentTarget.parentElement?.appendChild(fallback);
-            }}
+            className="h-7 lg:h-8 object-contain"
           />
         </div>
         <button
