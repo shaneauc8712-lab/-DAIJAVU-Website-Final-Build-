@@ -25,16 +25,10 @@ const Hero: React.FC = () => {
     document.getElementById('diagnostic-form')?.scrollIntoView({ behavior: 'smooth' });
   };
 
-  // Nav height constant (matches Navigation component)
-  const NAV_HEIGHT = 'var(--nav-height, 64px)';
-
   return (
     <section className="relative">
-      {/* ZONE A: Full-Bleed Video Banner (Top) - Increased Height, Starts Below Nav */}
-      <div
-        className="relative w-full h-[40vh] lg:h-[48vh] min-h-[280px] max-h-[420px] lg:min-h-[360px] lg:max-h-[560px] overflow-hidden"
-        style={{ paddingTop: NAV_HEIGHT }}
-      >
+      {/* PART A: Full-Width Media Banner (Nav Overlays This) */}
+      <div className="relative w-full h-[52vh] lg:h-[62vh] min-h-[340px] max-h-[560px] lg:min-h-[440px] lg:max-h-[720px] overflow-hidden">
         {/* Layer A: Backdrop - Blurred & Dimmed Cover Video */}
         <div className="absolute inset-0">
           <video
@@ -44,15 +38,19 @@ const Hero: React.FC = () => {
             muted
             playsInline
             aria-hidden="true"
-            className="w-full h-full object-cover blur-xl opacity-30"
-            style={{ objectPosition: 'center center' }}
+            className="w-full h-full object-cover"
+            style={{
+              objectPosition: 'center center',
+              filter: 'blur(22px) saturate(1.1) brightness(0.6)'
+            }}
             onError={(e) => {
               e.currentTarget.style.display = 'none';
             }}
           />
+          <div className="absolute inset-0 bg-black/30"></div>
         </div>
 
-        {/* Layer B: Foreground - Full Frame Contained Video */}
+        {/* Layer B: Foreground - Full Frame Contained Video (100% width/height) */}
         <div className="absolute inset-0 flex items-center justify-center">
           <video
             src={ASSETS.heroAnimation}
@@ -68,24 +66,24 @@ const Hero: React.FC = () => {
           />
         </div>
 
-        {/* Top fade - subtle polish at edges */}
+        {/* Top gradient for nav legibility */}
         <div
-          className="absolute inset-0 pointer-events-none"
+          className="absolute inset-x-0 top-0 h-32 pointer-events-none"
           style={{
-            background: 'linear-gradient(to bottom, rgba(5, 5, 5, 0.45) 0%, transparent 25%)'
+            background: 'linear-gradient(to bottom, rgba(5, 5, 5, 0.65) 0%, transparent 70%)'
           }}
         ></div>
 
-        {/* Bottom fade gradient - explicit opacity for blend */}
+        {/* Bottom fade gradient into text block */}
         <div
           className="absolute inset-0 pointer-events-none"
           style={{
-            background: 'linear-gradient(to bottom, transparent 0%, transparent 55%, rgba(5, 5, 5, 0.7) 100%)'
+            background: 'linear-gradient(to bottom, transparent 0%, transparent 55%, rgba(5, 5, 5, 0.75) 100%)'
           }}
         ></div>
       </div>
 
-      {/* ZONE B: Text Block (Below Video) */}
+      {/* PART B: Text Block (Below Media) */}
       <div className="relative bg-background-dark pt-12 lg:pt-16 pb-20 lg:pb-24 px-6">
         <div className="max-w-7xl mx-auto">
           <div className={`max-w-4xl transition-all duration-1000 transform ${isVisible ? 'translate-y-0 opacity-100' : 'translate-y-10 opacity-0'}`}>
@@ -95,17 +93,26 @@ const Hero: React.FC = () => {
               <span className="text-xs tracking-[0.3em] text-primary-cyan uppercase font-bold">Phase 0</span>
             </div>
 
-            {/* H1 - Linear Scale with clamp */}
+            {/* H1 - Reduced Scale */}
             <h1
               className="font-extrabold tracking-tight mb-8 lg:mb-10 text-white"
               style={{
-                fontSize: 'clamp(44px, 6vw, 84px)',
-                lineHeight: '0.98',
+                fontSize: 'clamp(38px, 9vw, 54px)',
+                lineHeight: '1.0',
                 letterSpacing: '-0.02em'
               }}
             >
               {COPY.hero.h1}
             </h1>
+
+            {/* Desktop H1 override */}
+            <style>{`
+              @media (min-width: 1024px) {
+                h1 {
+                  font-size: clamp(48px, 5.2vw, 72px) !important;
+                }
+              }
+            `}</style>
 
             {/* Subhead */}
             <p className="text-lg lg:text-xl text-text-secondary max-w-2xl mb-12 lg:mb-14 leading-relaxed font-light">
