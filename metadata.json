@@ -1,0 +1,8 @@
+
+{
+  "name": "Daijavu - Unified Systems Interface",
+  "description": "A high-performance, single-page website for Daijavu, the build interface for unified TAISON engagements. Featuring a Vercel-style aesthetic, strict operational laws, and a built-in systems diagnostic engine.",
+  "requestFramePermissions": [
+    "microphone"
+  ]
+}

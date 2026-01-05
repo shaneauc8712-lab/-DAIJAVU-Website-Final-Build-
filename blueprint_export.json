@@ -1,0 +1,19 @@
+
+{
+  "pages": [
+    {
+      "id": "taison",
+      "title": "Taison Engagement Interface",
+      "hero": {
+        "h1": "One brand. One promise. Zero client complexity.",
+        "subhead": "Daijavu is the build interface that routes you into a unified TAISON engagement—without making you learn our internal machinery.",
+        "micro_clarity": "2 minutes. No commitment. You’ll know the next step.",
+        "cta_helper": "Submit context → we return the recommended path."
+      },
+      "laws": [
+        "One brand. One promise.",
+        "Routing is internal complexity, never client burden."
+      ]
+    }
+  ]
+}
