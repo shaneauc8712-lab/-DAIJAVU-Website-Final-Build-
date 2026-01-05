@@ -59,7 +59,7 @@ const DiagnosticForm: React.FC = () => {
       setStatus('success');
     } catch (error) {
       console.error("Submission failed", error);
-      setStatus('success'); 
+      setStatus('success');
     }
   };
 
@@ -74,7 +74,7 @@ const DiagnosticForm: React.FC = () => {
             You’ll get the recommended next step by email.
           </p>
           <div className="mt-12 pt-8 border-t border-border/30">
-            <p className="text-xs text-border uppercase tracking-widest">Protocol: Taison Phase 0 Active</p>
+            <p className="text-xs text-border uppercase tracking-widest">Phase 0</p>
           </div>
         </div>
       </section>
@@ -109,7 +109,7 @@ const DiagnosticForm: React.FC = () => {
             <div className="space-y-5">
               {COPY.laws.map((law, i) => (
                 <div key={i} className="flex items-start gap-3">
-                  <span className="text-primary-purple font-mono text-xs">[{i+1}]</span>
+                  <span className="text-primary-purple font-mono text-xs">[{i + 1}]</span>
                   <p className="text-sm text-text-secondary leading-relaxed italic">
                     {law}
                   </p>
@@ -125,23 +125,23 @@ const DiagnosticForm: React.FC = () => {
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
               <div className="space-y-2">
                 <label className="text-[10px] uppercase tracking-[0.2em] text-text-secondary font-black">Full Name *</label>
-                <input 
+                <input
                   required
-                  type="text" 
+                  type="text"
                   placeholder="John Doe"
                   value={formData.name}
-                  onChange={e => setFormData({...formData, name: e.target.value})}
+                  onChange={e => setFormData({ ...formData, name: e.target.value })}
                   className="w-full bg-background-dark border-b border-border p-4 focus:border-primary-cyan focus:outline-none text-white transition-all hover:bg-white/5"
                 />
               </div>
               <div className="space-y-2">
                 <label className="text-[10px] uppercase tracking-[0.2em] text-text-secondary font-black">Primary Email *</label>
-                <input 
+                <input
                   required
-                  type="email" 
+                  type="email"
                   placeholder="john@company.com"
                   value={formData.email}
-                  onChange={e => setFormData({...formData, email: e.target.value})}
+                  onChange={e => setFormData({ ...formData, email: e.target.value })}
                   className="w-full bg-background-dark border-b border-border p-4 focus:border-primary-cyan focus:outline-none text-white transition-all hover:bg-white/5"
                 />
               </div>
@@ -149,12 +149,12 @@ const DiagnosticForm: React.FC = () => {
 
             <div className="space-y-2">
               <label className="text-[10px] uppercase tracking-[0.2em] text-text-secondary font-black">Company Name *</label>
-              <input 
+              <input
                 required
-                type="text" 
+                type="text"
                 placeholder="Enterprise Inc."
                 value={formData.companyName}
-                onChange={e => setFormData({...formData, companyName: e.target.value})}
+                onChange={e => setFormData({ ...formData, companyName: e.target.value })}
                 className="w-full bg-background-dark border-b border-border p-4 focus:border-primary-cyan focus:outline-none text-white transition-all hover:bg-white/5"
               />
             </div>
@@ -162,10 +162,10 @@ const DiagnosticForm: React.FC = () => {
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
               <div className="space-y-2">
                 <label className="text-[10px] uppercase tracking-[0.2em] text-text-secondary font-black">Primary Goal *</label>
-                <select 
+                <select
                   required
                   value={formData.goal}
-                  onChange={e => setFormData({...formData, goal: e.target.value})}
+                  onChange={e => setFormData({ ...formData, goal: e.target.value })}
                   className="w-full bg-background-dark border-b border-border p-4 focus:border-primary-cyan focus:outline-none text-white transition-all appearance-none cursor-pointer hover:bg-white/5"
                 >
                   <option value="" disabled className="text-border">Select Category</option>
@@ -177,10 +177,10 @@ const DiagnosticForm: React.FC = () => {
               </div>
               <div className="space-y-2">
                 <label className="text-[10px] uppercase tracking-[0.2em] text-text-secondary font-black">Timeline *</label>
-                <select 
+                <select
                   required
                   value={formData.timeline}
-                  onChange={e => setFormData({...formData, timeline: e.target.value})}
+                  onChange={e => setFormData({ ...formData, timeline: e.target.value })}
                   className="w-full bg-background-dark border-b border-border p-4 focus:border-primary-cyan focus:outline-none text-white transition-all appearance-none cursor-pointer hover:bg-white/5"
                 >
                   <option value="" disabled className="text-border">Select Timeline</option>
@@ -194,11 +194,11 @@ const DiagnosticForm: React.FC = () => {
 
             <div className="space-y-2">
               <label className="text-[10px] uppercase tracking-[0.2em] text-text-secondary font-black">What would make this a win in 90 days? *</label>
-              <textarea 
+              <textarea
                 required
                 rows={2}
                 value={formData.winSummary}
-                onChange={e => setFormData({...formData, winSummary: e.target.value})}
+                onChange={e => setFormData({ ...formData, winSummary: e.target.value })}
                 className="w-full bg-background-dark border-b border-border p-4 focus:border-primary-cyan focus:outline-none text-white transition-all resize-none hover:bg-white/5"
                 placeholder="Briefly describe your desired outcome..."
               />
@@ -206,22 +206,22 @@ const DiagnosticForm: React.FC = () => {
 
             {/* Optional Fields (Faded) */}
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6 opacity-40 hover:opacity-100 transition-opacity pt-4 border-t border-border/20">
-               <div className="space-y-1">
-                 <label className="text-[9px] uppercase tracking-widest text-text-secondary">Role</label>
-                 <input type="text" onChange={e => setFormData({...formData, role: e.target.value})} className="w-full bg-transparent border-b border-border/50 p-2 text-xs focus:border-primary-purple outline-none" />
-               </div>
-               <div className="space-y-1">
-                 <label className="text-[9px] uppercase tracking-widest text-text-secondary">Website</label>
-                 <input type="text" onChange={e => setFormData({...formData, website: e.target.value})} className="w-full bg-transparent border-b border-border/50 p-2 text-xs focus:border-primary-purple outline-none" />
-               </div>
-               <div className="space-y-1">
-                 <label className="text-[9px] uppercase tracking-widest text-text-secondary">Phone</label>
-                 <input type="text" onChange={e => setFormData({...formData, phone: e.target.value})} className="w-full bg-transparent border-b border-border/50 p-2 text-xs focus:border-primary-purple outline-none" />
-               </div>
+              <div className="space-y-1">
+                <label className="text-[9px] uppercase tracking-widest text-text-secondary">Role</label>
+                <input type="text" onChange={e => setFormData({ ...formData, role: e.target.value })} className="w-full bg-transparent border-b border-border/50 p-2 text-xs focus:border-primary-purple outline-none" />
+              </div>
+              <div className="space-y-1">
+                <label className="text-[9px] uppercase tracking-widest text-text-secondary">Website</label>
+                <input type="text" onChange={e => setFormData({ ...formData, website: e.target.value })} className="w-full bg-transparent border-b border-border/50 p-2 text-xs focus:border-primary-purple outline-none" />
+              </div>
+              <div className="space-y-1">
+                <label className="text-[9px] uppercase tracking-widest text-text-secondary">Phone</label>
+                <input type="text" onChange={e => setFormData({ ...formData, phone: e.target.value })} className="w-full bg-transparent border-b border-border/50 p-2 text-xs focus:border-primary-purple outline-none" />
+              </div>
             </div>
 
             <div className="pt-6">
-              <button 
+              <button
                 disabled={status === 'loading'}
                 className="w-full bg-primary-cyan hover:bg-white text-black font-black py-6 transition-all duration-500 transform hover:-translate-y-1 shadow-[0_20px_40px_rgba(0,242,255,0.1)] flex items-center justify-center gap-4 uppercase tracking-widest"
               >

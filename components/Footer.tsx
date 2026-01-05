@@ -12,7 +12,7 @@ const Footer: React.FC = () => {
       <div className="max-w-7xl mx-auto flex flex-col items-center text-center">
         <h2 className="text-5xl font-bold tracking-tighter mb-6">{COPY.hero.h1}</h2>
         <p className="text-xl text-text-secondary mb-12 max-w-2xl">
-          Routing is internal complexity, never client burden. One Brand. One Promise.
+          Routing is internal complexity, never client burden. One brand. One Promise.
         </p>
 
         <button
@@ -50,7 +50,6 @@ const Footer: React.FC = () => {
           <div className="flex flex-col items-end justify-between">
             <div className="text-right">
               <p className="text-xs text-text-secondary">© 2026 Daijavu OS.</p>
-              <p className="text-xs text-text-secondary mt-1 italic">Built for the Taison Protocol.</p>
             </div>
           </div>
         </div>

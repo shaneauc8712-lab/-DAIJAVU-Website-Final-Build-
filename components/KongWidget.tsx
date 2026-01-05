@@ -15,8 +15,23 @@ declare global {
 const KongWidget: React.FC = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [isConfigured, setIsConfigured] = useState(false);
+  const defaultAgentId = 'agent_3201kctx6c2mepea4tmx9xhqbpnb';
 
   useEffect(() => {
+    // Set default KONG widget config if not already set
+    if (!window.KONG_WIDGET) {
+      window.KONG_WIDGET = {
+        agentId: defaultAgentId,
+        theme: {
+          primary: '#00f2ff',
+          secondary: '#bc13fe',
+          background: '#050505',
+          text: '#ffffff'
+        },
+        privacyMode: true
+      };
+    }
+
     // Check if KONG widget is configured
     const configured = !!(window.KONG_WIDGET?.agentId);
     setIsConfigured(configured);
@@ -78,7 +93,6 @@ const KongWidget: React.FC = () => {
                 </div>
                 <div>
                   <h3 className="font-bold text-lg text-white tracking-tight">KONG Assistant</h3>
-                  <p className="text-[10px] uppercase tracking-widest text-primary-cyan font-black">Unified TAISON Engine</p>
                 </div>
               </div>
               <button
@@ -97,7 +111,7 @@ const KongWidget: React.FC = () => {
                 <>
                   <div className="w-full mb-10 text-center">
                     <p className="text-text-secondary text-sm leading-relaxed mb-8 italic">
-                      "I am KONG. I route you through the TAISON machinery. During diagnosis, privacy is absolute. I will not request identity data until you commit to the system map."
+                      KONG won't ask for contact details here—use the form when ready.
                     </p>
 
                     {/* The ElevenLabs Convai Web Component */}

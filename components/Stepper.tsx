@@ -8,7 +8,7 @@ const Stepper: React.FC = () => {
       <div className="max-w-7xl mx-auto">
         <div className="flex flex-col items-center mb-20">
           <img src={ASSETS.mascot} alt="Stamp" className="w-12 h-12 mb-6 opacity-30 grayscale hover:grayscale-0 transition-all" />
-          <h2 className="text-4xl font-bold tracking-tight text-center">The Path to One Brand.</h2>
+          <h2 className="text-4xl font-bold tracking-tight text-center">The Path to One brand.</h2>
         </div>
 
         <div className="flex flex-col lg:flex-row gap-8 lg:gap-0 lg:divide-x divide-border">

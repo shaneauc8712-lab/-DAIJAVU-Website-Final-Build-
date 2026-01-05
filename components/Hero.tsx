@@ -23,7 +23,7 @@ const Hero: React.FC = () => {
         <div className={`transition-all duration-1000 transform ${isVisible ? 'translate-x-0 opacity-100' : '-translate-x-20 opacity-0'}`}>
           <div className="mb-6 flex items-center gap-3">
             <img src={ASSETS.mascot} alt="Mascot" className="w-10 h-10 rounded-full border border-primary-cyan p-0.5" />
-            <span className="text-xs tracking-widest text-primary-cyan uppercase font-bold">Taison Protocol</span>
+            <span className="text-xs tracking-widest text-primary-cyan uppercase font-bold">Phase 0</span>
           </div>
 
           <h1 className="text-6xl md:text-8xl font-bold tracking-tight mb-8 leading-[0.9] text-white">
@@ -94,7 +94,6 @@ const Hero: React.FC = () => {
                     </div>
                     <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-center">
                       <div className="text-[10px] tracking-[0.3em] uppercase text-primary-cyan font-bold mb-2">Animation Placeholder</div>
-                      <div className="text-2xl font-black text-white tracking-tighter">TAISON</div>
                     </div>
                   </div>
                 </div>
