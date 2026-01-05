@@ -4,11 +4,11 @@ import { BLOGS } from '../constants';
 
 const BlogSection: React.FC = () => {
   return (
-    <section className="py-32 px-6">
+    <section id="latest" className="py-32 px-6">
       <div className="max-w-7xl mx-auto">
         <div className="flex justify-between items-end mb-16">
-           <h2 className="text-4xl font-bold tracking-tight">Latest Intelligence</h2>
-           <a href="#" className="text-sm text-text-secondary hover:text-primary-cyan transition-colors underline underline-offset-8">View all articles</a>
+          <h2 className="text-4xl font-bold tracking-tight">Latest Intelligence</h2>
+          <a href="#latest" className="text-sm text-text-secondary hover:text-primary-cyan transition-colors underline underline-offset-8">View all articles</a>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-12">

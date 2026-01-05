@@ -1,0 +1,19 @@
+/* Additional styles for Daijavu site */
+/* This file is referenced in index.html but can remain minimal */
+/* Core styles are in index.html inline styles */
+
+#latest {
+  scroll-margin-top: 100px;
+}
+
+#diagnostic-form {
+  scroll-margin-top: 100px;
+}
+
+#outcomes {
+  scroll-margin-top: 100px;
+}
+
+#timeline {
+  scroll-margin-top: 100px;
+}

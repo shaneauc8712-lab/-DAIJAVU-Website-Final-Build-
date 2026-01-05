@@ -1,35 +1,35 @@
 
 import React from 'react';
+import { COPY } from '../constants';
 
 const Testimonials: React.FC = () => {
-  const testimonials = [
+  const principles = [
     {
-      quote: "Daijavu removed the 'black box' of our delivery cycle. We now move with total clarity.",
-      author: "COO, Fintech Growth",
-      outcome: "2.4x Efficiency Gain"
+      principle: COPY.laws[0],
+      context: "The foundation of the TAISON engagement model."
     },
     {
-      quote: "The only partner that actually mapped our internal decisions before trying to automate them.",
-      author: "Director of Ops, SaaS Enterprise",
-      outcome: "Zero Governance Debt"
+      principle: COPY.laws[1],
+      context: "Client experience is simplified through internal routing intelligence."
     }
   ];
 
   return (
     <section className="py-32 px-6">
       <div className="max-w-7xl mx-auto">
+        <h2 className="text-4xl font-bold tracking-tight mb-16 text-center">Proof Principles</h2>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-          {testimonials.map((t, idx) => (
+          {principles.map((p, idx) => (
             <div key={idx} className="glass-card p-12 hover:border-primary-purple transition-all group">
               <p className="text-2xl font-medium text-white mb-10 leading-relaxed italic">
-                "{t.quote}"
+                "{p.principle}"
               </p>
               <div className="flex justify-between items-end">
                 <div>
-                  <div className="text-sm font-bold text-white uppercase tracking-widest">{t.author}</div>
+                  <div className="text-sm font-bold text-text-secondary uppercase tracking-widest">{p.context}</div>
                 </div>
                 <div className="text-[10px] tracking-widest uppercase font-bold text-primary-cyan border border-primary-cyan/30 px-3 py-1 rounded-sm">
-                  {t.outcome}
+                  Canon Law
                 </div>
               </div>
             </div>

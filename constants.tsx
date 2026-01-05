@@ -40,41 +40,42 @@ export const COPY = {
 };
 
 export const ASSETS = {
-  mascot: "https://storage.googleapis.com/eleven-public-cdn/convai/agent_3201kctx6c2mepea4tmx9xhqbpnb/avatar.png",
-  heroAnimation: "https://framerusercontent.com/assets/7OQ2Y3S4P5O6I7L8K9J0.mp4",
-  wideVisual: "https://images.unsplash.com/photo-1639322537228-f710d846310a?q=80&w=2000&auto=format&fit=crop",
+  logoLockup: "/assets/logo-lockup.png",
+  mascot: "/assets/mascot.png",
+  heroAnimation: "/assets/hero-animation.mp4",
+  wideVisual: "/assets/visual-strip.png",
 };
 
 export const OUTCOMES = [
   {
-    title: "OS Mapping",
-    description: "Full visibility into your internal machinery.",
-    tag: "Core",
-    icons: ["https://picsum.photos/40/40?random=1", "https://picsum.photos/40/40?random=2", "https://picsum.photos/40/40?random=3"]
+    title: "(Not Specified)",
+    description: "(Not Specified)",
+    tag: "(Not Specified)",
+    icons: ["/assets/icon-1.png", "/assets/icon-2.png", "/assets/icon-3.png"]
   },
   {
-    title: "Governance Engine",
-    description: "Decision frameworks that don't need you.",
-    tag: "Scale",
-    icons: ["https://picsum.photos/40/40?random=4", "https://picsum.photos/40/40?random=5", "https://picsum.photos/40/40?random=6"]
+    title: "(Not Specified)",
+    description: "(Not Specified)",
+    tag: "(Not Specified)",
+    icons: ["/assets/icon-4.png", "/assets/icon-5.png", "/assets/icon-6.png"]
   },
   {
-    title: "Delivery Sync",
-    description: "Handoffs that feel like one movement.",
-    tag: "Flow",
-    icons: ["https://picsum.photos/40/40?random=7", "https://picsum.photos/40/40?random=8", "https://picsum.photos/40/40?random=9"]
+    title: "(Not Specified)",
+    description: "(Not Specified)",
+    tag: "(Not Specified)",
+    icons: ["/assets/icon-7.png", "/assets/icon-8.png", "/assets/icon-9.png"]
   }
 ];
 
 export const TIMELINE = [
-  { phase: "Phase 0", definition: "Systems Diagnostic & Fit Gate", output: "Clarity Score" },
-  { phase: "Phase 1", definition: "Architecture & Design", output: "System Map" },
-  { phase: "Phase 2", definition: "The Build Phase", output: "Operational OS" },
-  { phase: "Phase 3", definition: "Optimization Loop", output: "ROI Verified" }
+  { phase: "Phase 0", definition: "Systems Diagnostic", output: "(Not Specified)" },
+  { phase: "Phase 1", definition: "(Not Specified)", output: "(Not Specified)" },
+  { phase: "Phase 2", definition: "(Not Specified)", output: "(Not Specified)" },
+  { phase: "Phase 3", definition: "(Not Specified)", output: "(Not Specified)" }
 ];
 
 export const BLOGS = [
-  { title: "The High Cost of Internal Complexity", tag: "Strategy", date: "Jan 12, 2026" },
-  { title: "One Brand, One Promise: The OS Doctrine", tag: "Culture", date: "Jan 05, 2026" },
-  { title: "Why Most AI Implementations Fail Operators", tag: "Tech", date: "Dec 20, 2025" }
+  { title: "(Not Specified)", tag: "(Not Specified)", date: "(Not Specified)" },
+  { title: "(Not Specified)", tag: "(Not Specified)", date: "(Not Specified)" },
+  { title: "(Not Specified)", tag: "(Not Specified)", date: "(Not Specified)" }
 ];

@@ -84,9 +84,30 @@
         transform: translateY(0);
       }
 
-      /* Subtle animated background */
+      /* Subtle animated background - slow drift */
+      @keyframes bgDrift {
+        0%, 100% { 
+          background-position: 0% 50%; 
+        }
+        50% { 
+          background-position: 100% 50%; 
+        }
+      }
+
       .bg-gradient-animate {
-        background: radial-gradient(circle at 50% 50%, #101010 0%, #050505 100%);
+        background: radial-gradient(
+          ellipse at 30% 40%, 
+          rgba(188, 19, 254, 0.03) 0%, 
+          transparent 50%
+        ),
+        radial-gradient(
+          ellipse at 70% 60%, 
+          rgba(0, 242, 255, 0.02) 0%, 
+          transparent 50%
+        ),
+        #050505;
+        background-size: 200% 200%;
+        animation: bgDrift 30s ease-in-out infinite;
         position: fixed;
         top: 0;
         left: 0;
@@ -103,6 +124,30 @@
         border-radius: 50%;
         filter: blur(80px);
         pointer-events: none;
+      }
+
+      /* Prefers-reduced-motion support */
+      @media (prefers-reduced-motion: reduce) {
+        .bg-gradient-animate {
+          animation: none;
+          background: #050505;
+        }
+        
+        .scroll-reveal {
+          opacity: 1;
+          transform: none;
+          transition: none;
+        }
+        
+        .border-beam::after {
+          animation: none;
+        }
+        
+        * {
+          animation-duration: 0.01ms !important;
+          animation-iteration-count: 1 !important;
+          transition-duration: 0.01ms !important;
+        }
       }
     </style>
 <script type="importmap">
