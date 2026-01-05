@@ -26,15 +26,15 @@ const Hero: React.FC = () => {
   };
 
   return (
-    <section className="relative min-h-screen flex flex-col">
-      {/* BANNER ZONE (TOP) - Full Bleed Edge-to-Edge */}
+    <section className="relative">
+      {/* FULL-BLEED VIDEO BANNER (TOP) - Edge to Edge */}
       <div
         className="relative w-screen left-1/2 right-1/2 -ml-[50vw] -mr-[50vw] overflow-hidden"
         style={{
-          height: 'clamp(260px, 38vh, 420px)'
+          height: 'clamp(300px, 44vh, 420px)'
         }}
       >
-        {/* Layer A: Backdrop - Blurred Cover (fills edges) */}
+        {/* Layer A: Blurred Cover Background (cinematic edges) */}
         <div className="absolute inset-0">
           <video
             src={ASSETS.heroAnimation}
@@ -43,17 +43,19 @@ const Hero: React.FC = () => {
             muted
             playsInline
             aria-hidden="true"
-            className="w-full h-full object-cover scale-105"
+            className="w-full h-full object-cover scale-110"
             style={{
-              filter: 'blur(20px) brightness(0.65) saturate(1.05)'
+              filter: 'blur(24px) brightness(0.6) saturate(1.1)'
             }}
             onError={(e) => {
               e.currentTarget.style.display = 'none';
             }}
           />
+          {/* Subtle radial gradient backdrop */}
+          <div className="absolute inset-0 bg-gradient-radial from-primary-purple/5 via-transparent to-transparent"></div>
         </div>
 
-        {/* Layer B: Foreground - Full Ape Visible (contained) */}
+        {/* Layer B: Sharp Foreground Video (full ape visible) */}
         <div className="absolute inset-0 flex items-center justify-center">
           <video
             src={ASSETS.heroAnimation}
@@ -69,14 +71,12 @@ const Hero: React.FC = () => {
           />
         </div>
 
-        {/* Bottom fade gradient - blend into text zone */}
+        {/* Bottom Fade Gradient - 40% of banner height, fades to #050505 */}
         <div
-          className="absolute inset-0 pointer-events-none"
+          className="absolute inset-x-0 bottom-0 pointer-events-none"
           style={{
-            background: 'linear-gradient(to bottom, rgba(5, 5, 5, 0) 0%, rgba(5, 5, 5, 0.35) 55%, rgba(5, 5, 5, 1) 100%)',
-            height: '110px',
-            bottom: 0,
-            top: 'auto'
+            height: '40%',
+            background: 'linear-gradient(to bottom, transparent 0%, rgba(5, 5, 5, 0.4) 30%, rgba(5, 5, 5, 0.85) 70%, #050505 100%)'
           }}
         ></div>
       </div>
@@ -85,48 +85,63 @@ const Hero: React.FC = () => {
       <style>{`
         @media (min-width: 1024px) {
           .hero-banner {
-            height: clamp(360px, 46vh, 520px) !important;
-          }
-          .hero-fade {
-            height: 140px !important;
+            height: clamp(420px, 56vh, 620px) !important;
           }
         }
       `}</style>
 
-      {/* TEXT ZONE (BOTTOM) - Centered, Longer */}
-      <div className="relative flex-1 bg-background-dark flex items-center justify-center py-16 lg:py-20 px-6">
-        <div className="w-full max-w-5xl mx-auto">
+      {/* TEXT CONTENT (BELOW) - Overlaps banner with negative margin */}
+      <div
+        className="relative bg-background-dark px-6 pb-20 lg:pb-24"
+        style={{
+          marginTop: '-80px'
+        }}
+      >
+        {/* Desktop overlap override */}
+        <style>{`
+          @media (min-width: 1024px) {
+            .hero-text-overlap {
+              margin-top: -120px !important;
+            }
+          }
+        `}</style>
+
+        <div className="max-w-6xl mx-auto hero-text-overlap">
           <div className={`text-center transition-all duration-1000 transform ${isVisible ? 'translate-y-0 opacity-100' : 'translate-y-10 opacity-0'}`}>
             {/* Phase Badge + Mascot */}
-            <div className="mb-8 flex items-center gap-3 justify-center">
+            <div className="mb-8 flex items-center gap-3 justify-center relative z-10">
               <img src={ASSETS.mascot} alt="KONG Mascot" className="w-10 h-10 rounded-full border-2 border-primary-cyan p-0.5 object-cover" />
               <span className="text-xs tracking-[0.3em] text-primary-cyan uppercase font-bold">Phase 0</span>
             </div>
 
-            {/* H1 - Reduced Scale */}
+            {/* H1 - Reduced Scale, Dominant but Not Oversized */}
             <h1
-              className="font-extrabold tracking-tight mb-8 text-white mx-auto max-w-4xl"
+              className="font-extrabold tracking-tight mb-8 lg:mb-10 text-white mx-auto max-w-4xl relative z-10"
               style={{
-                fontSize: 'clamp(44px, 5.4vw, 72px)',
-                lineHeight: '1.05',
+                fontSize: 'clamp(38px, 8vw, 60px)',
+                lineHeight: '0.95',
                 letterSpacing: '-0.025em'
               }}
             >
               {COPY.hero.h1}
             </h1>
 
-            {/* Subhead - Reduced Scale */}
-            <p
-              className="text-text-secondary mx-auto max-w-3xl mb-12 leading-relaxed font-light"
-              style={{
-                fontSize: 'clamp(14px, 1.35vw, 18px)'
-              }}
-            >
+            {/* Desktop H1 override */}
+            <style>{`
+              @media (min-width: 1024px) {
+                .hero-h1 {
+                  font-size: clamp(44px, 5vw, 84px) !important;
+                }
+              }
+            `}</style>
+
+            {/* Subhead */}
+            <p className="text-base lg:text-lg text-text-secondary mx-auto max-w-3xl mb-12 lg:mb-14 leading-relaxed font-light relative z-10">
               {COPY.hero.subhead}
             </p>
 
             {/* Value Prop List - Centered */}
-            <div className="mb-14 space-y-4 max-w-2xl mx-auto">
+            <div className="mb-14 space-y-4 max-w-2xl mx-auto relative z-10">
               <p className="text-xs uppercase tracking-[0.3em] text-border font-extrabold mb-6">Immediate Outcomes</p>
               {COPY.valueProp.map((prop, i) => (
                 <div key={i} className="flex items-start gap-4 group text-left">
@@ -140,7 +155,7 @@ const Hero: React.FC = () => {
             </div>
 
             {/* Primary CTA - Centered */}
-            <div className="flex flex-col gap-5 items-center">
+            <div className="flex flex-col gap-5 items-center relative z-10">
               <button
                 onClick={scrollToForm}
                 className="group relative bg-primary-cyan hover:bg-white text-black font-extrabold py-5 lg:py-6 px-12 lg:px-16 rounded-none transition-all duration-500 transform hover:-translate-y-1 shadow-[0_0_50px_rgba(0,242,255,0.25)] hover:shadow-[0_0_80px_rgba(0,242,255,0.5)] uppercase tracking-[0.25em] text-sm overflow-hidden"
@@ -163,7 +178,7 @@ const Hero: React.FC = () => {
             </div>
 
             {/* Scroll Indicator */}
-            <div className="mt-20 flex justify-center">
+            <div className="mt-20 flex justify-center relative z-10">
               <div className={`flex flex-col items-center gap-2.5 ${prefersReducedMotion ? '' : 'animate-bounce'}`}>
                 <span className="text-xs text-border uppercase tracking-[0.3em]">Scroll</span>
                 <svg className="w-5 h-5 text-primary-cyan" fill="none" stroke="currentColor" viewBox="0 0 24 24">
