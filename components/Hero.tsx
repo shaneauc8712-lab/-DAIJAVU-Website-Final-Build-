@@ -25,31 +25,64 @@ const Hero: React.FC = () => {
     document.getElementById('diagnostic-form')?.scrollIntoView({ behavior: 'smooth' });
   };
 
+  // Nav height constant (matches Navigation component)
+  const NAV_HEIGHT = 'var(--nav-height, 64px)';
+
   return (
     <section className="relative">
-      {/* ZONE A: Full-Bleed Video Banner (Top) - Shorter Height */}
-      <div className="relative w-full h-[34vh] lg:h-[38vh] min-h-[240px] max-h-[360px] lg:min-h-[280px] lg:max-h-[420px] overflow-hidden">
-        <video
-          src={ASSETS.heroAnimation}
-          autoPlay={!prefersReducedMotion}
-          loop
-          muted
-          playsInline
-          aria-hidden="true"
-          className="w-full h-full object-cover"
-          style={{ objectPosition: 'center center' }}
-          onError={(e) => {
-            e.currentTarget.style.display = 'none';
+      {/* ZONE A: Full-Bleed Video Banner (Top) - Increased Height, Starts Below Nav */}
+      <div
+        className="relative w-full h-[40vh] lg:h-[48vh] min-h-[280px] max-h-[420px] lg:min-h-[360px] lg:max-h-[560px] overflow-hidden"
+        style={{ paddingTop: NAV_HEIGHT }}
+      >
+        {/* Layer A: Backdrop - Blurred & Dimmed Cover Video */}
+        <div className="absolute inset-0">
+          <video
+            src={ASSETS.heroAnimation}
+            autoPlay={!prefersReducedMotion}
+            loop
+            muted
+            playsInline
+            aria-hidden="true"
+            className="w-full h-full object-cover blur-xl opacity-30"
+            style={{ objectPosition: 'center center' }}
+            onError={(e) => {
+              e.currentTarget.style.display = 'none';
+            }}
+          />
+        </div>
+
+        {/* Layer B: Foreground - Full Frame Contained Video */}
+        <div className="absolute inset-0 flex items-center justify-center">
+          <video
+            src={ASSETS.heroAnimation}
+            autoPlay={!prefersReducedMotion}
+            loop
+            muted
+            playsInline
+            aria-hidden="true"
+            className="w-full h-full object-contain"
+            onError={(e) => {
+              e.currentTarget.style.display = 'none';
+            }}
+          />
+        </div>
+
+        {/* Top fade - subtle polish at edges */}
+        <div
+          className="absolute inset-0 pointer-events-none"
+          style={{
+            background: 'linear-gradient(to bottom, rgba(5, 5, 5, 0.45) 0%, transparent 25%)'
           }}
-        />
+        ></div>
 
-        {/* Subtle global vignette */}
-        <div className="absolute inset-0 bg-gradient-radial from-transparent via-transparent to-black/20"></div>
-
-        {/* Bottom fade gradient - explicit opacity */}
-        <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-black/70" style={{
-          backgroundImage: 'linear-gradient(to bottom, transparent 0%, transparent 55%, rgba(5, 5, 5, 0.7) 100%)'
-        }}></div>
+        {/* Bottom fade gradient - explicit opacity for blend */}
+        <div
+          className="absolute inset-0 pointer-events-none"
+          style={{
+            background: 'linear-gradient(to bottom, transparent 0%, transparent 55%, rgba(5, 5, 5, 0.7) 100%)'
+          }}
+        ></div>
       </div>
 
       {/* ZONE B: Text Block (Below Video) */}

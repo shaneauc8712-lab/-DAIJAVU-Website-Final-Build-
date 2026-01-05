@@ -1,156 +1,164 @@
-
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Daijavu | One brand. One Promise.</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script>
-      tailwind.config = {
-        theme: {
-          extend: {
-            colors: {
-              background: {
-                dark: '#050505',
-                mid: '#101010',
-              },
-              primary: {
-                cyan: '#00f2ff',
-                purple: '#bc13fe',
-              },
-              text: {
-                primary: '#ffffff',
-                secondary: '#aaaaaa',
-              },
-              border: '#444444',
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Daijavu | One brand. One Promise.</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            background: {
+              dark: '#050505',
+              mid: '#101010',
             },
-            fontFamily: {
-              sans: ['Inter', 'system-ui', 'sans-serif'],
-            }
+            primary: {
+              cyan: '#00f2ff',
+              purple: '#bc13fe',
+            },
+            text: {
+              primary: '#ffffff',
+              secondary: '#aaaaaa',
+            },
+            border: '#444444',
+          },
+          fontFamily: {
+            sans: ['Inter', 'system-ui', 'sans-serif'],
           }
         }
       }
-    </script>
-    <style>
-      @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
-      
-      body {
-        background-color: #050505;
-        color: #ffffff;
-        -webkit-font-smoothing: antialiased;
+    }
+  </script>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+
+    :root {
+      --nav-height: 64px;
+    }
+
+    body {
+      background-color: #050505;
+      color: #ffffff;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    .glass-card {
+      background: rgba(16, 16, 16, 0.7);
+      backdrop-filter: blur(12px);
+      border: 1px solid #444444;
+    }
+
+    .glow-border:hover {
+      border-color: #00f2ff;
+      box-shadow: 0 0 20px rgba(0, 242, 255, 0.1);
+    }
+
+    @keyframes beam {
+      0% {
+        transform: translateX(-100%);
       }
 
-      .glass-card {
-        background: rgba(16, 16, 16, 0.7);
-        backdrop-filter: blur(12px);
-        border: 1px solid #444444;
+      100% {
+        transform: translateX(100%);
+      }
+    }
+
+    .border-beam {
+      position: relative;
+      overflow: hidden;
+    }
+
+    .border-beam::after {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, #00f2ff, transparent);
+      animation: beam 3s infinite linear;
+    }
+
+    .scroll-reveal {
+      opacity: 0;
+      transform: translateY(20px);
+      transition: all 0.8s ease-out;
+    }
+
+    .scroll-reveal.active {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* Subtle animated background - slow drift */
+    @keyframes bgDrift {
+
+      0%,
+      100% {
+        background-position: 0% 50%;
       }
 
-      .glow-border:hover {
-        border-color: #00f2ff;
-        box-shadow: 0 0 20px rgba(0, 242, 255, 0.1);
+      50% {
+        background-position: 100% 50%;
       }
+    }
 
-      @keyframes beam {
-        0% { transform: translateX(-100%); }
-        100% { transform: translateX(100%); }
-      }
+    .bg-gradient-animate {
+      background: radial-gradient(ellipse at 30% 40%,
+          rgba(188, 19, 254, 0.03) 0%,
+          transparent 50%),
+        radial-gradient(ellipse at 70% 60%,
+          rgba(0, 242, 255, 0.02) 0%,
+          transparent 50%),
+        #050505;
+      background-size: 200% 200%;
+      animation: bgDrift 30s ease-in-out infinite;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: -1;
+    }
 
-      .border-beam {
-        position: relative;
-        overflow: hidden;
-      }
+    .bg-glow {
+      position: absolute;
+      width: 600px;
+      height: 600px;
+      background: radial-gradient(circle, rgba(188, 19, 254, 0.05) 0%, transparent 70%);
+      border-radius: 50%;
+      filter: blur(80px);
+      pointer-events: none;
+    }
 
-      .border-beam::after {
-        content: "";
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 1px;
-        background: linear-gradient(90deg, transparent, #00f2ff, transparent);
-        animation: beam 3s infinite linear;
+    /* Prefers-reduced-motion support */
+    @media (prefers-reduced-motion: reduce) {
+      .bg-gradient-animate {
+        animation: none;
+        background: #050505;
       }
 
       .scroll-reveal {
-        opacity: 0;
-        transform: translateY(20px);
-        transition: all 0.8s ease-out;
-      }
-
-      .scroll-reveal.active {
         opacity: 1;
-        transform: translateY(0);
+        transform: none;
+        transition: none;
       }
 
-      /* Subtle animated background - slow drift */
-      @keyframes bgDrift {
-        0%, 100% { 
-          background-position: 0% 50%; 
-        }
-        50% { 
-          background-position: 100% 50%; 
-        }
+      .border-beam::after {
+        animation: none;
       }
 
-      .bg-gradient-animate {
-        background: radial-gradient(
-          ellipse at 30% 40%, 
-          rgba(188, 19, 254, 0.03) 0%, 
-          transparent 50%
-        ),
-        radial-gradient(
-          ellipse at 70% 60%, 
-          rgba(0, 242, 255, 0.02) 0%, 
-          transparent 50%
-        ),
-        #050505;
-        background-size: 200% 200%;
-        animation: bgDrift 30s ease-in-out infinite;
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        z-index: -1;
+      * {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
       }
-
-      .bg-glow {
-        position: absolute;
-        width: 600px;
-        height: 600px;
-        background: radial-gradient(circle, rgba(188, 19, 254, 0.05) 0%, transparent 70%);
-        border-radius: 50%;
-        filter: blur(80px);
-        pointer-events: none;
-      }
-
-      /* Prefers-reduced-motion support */
-      @media (prefers-reduced-motion: reduce) {
-        .bg-gradient-animate {
-          animation: none;
-          background: #050505;
-        }
-        
-        .scroll-reveal {
-          opacity: 1;
-          transform: none;
-          transition: none;
-        }
-        
-        .border-beam::after {
-          animation: none;
-        }
-        
-        * {
-          animation-duration: 0.01ms !important;
-          animation-iteration-count: 1 !important;
-          transition-duration: 0.01ms !important;
-        }
-      }
-    </style>
-<script type="importmap">
+    }
+  </style>
+  <script type="importmap">
 {
   "imports": {
     "react/": "https://esm.sh/react@^19.2.3/",
@@ -159,10 +167,12 @@
   }
 }
 </script>
-<link rel="stylesheet" href="/index.css">
+  <link rel="stylesheet" href="/index.css">
 </head>
+
 <body>
-    <div id="root"></div>
-<script type="module" src="/index.tsx"></script>
+  <div id="root"></div>
+  <script type="module" src="/index.tsx"></script>
 </body>
+
 </html>
