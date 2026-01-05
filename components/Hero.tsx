@@ -27,14 +27,9 @@ const Hero: React.FC = () => {
 
   return (
     <section className="relative">
-      {/* A) FULL-BLEED VIDEO BANNER (TOP) */}
+      {/* HERO_BANNER: Full-Bleed Video Region */}
       <div
-        className="relative overflow-hidden"
-        style={{
-          width: '100vw',
-          marginLeft: 'calc(-50vw + 50%)',
-          height: 'clamp(300px, 48vh, 520px)'
-        }}
+        className="relative w-screen left-1/2 -translate-x-1/2 overflow-hidden h-[44vh] min-h-[320px] max-h-[460px] lg:h-[62vh] lg:min-h-[520px] lg:max-h-[680px]"
       >
         {/* Video Layer */}
         <video
@@ -53,49 +48,40 @@ const Hero: React.FC = () => {
           }}
         />
 
-        {/* Bottom Fade Gradient - Blends to #050505 */}
+        {/* Top Scrim - Nav Readability */}
         <div
-          className="absolute inset-0 pointer-events-none"
+          className="absolute inset-x-0 top-0 h-32 pointer-events-none"
           style={{
-            background: 'linear-gradient(to bottom, transparent 0%, transparent 45%, rgba(5, 5, 5, 0.92) 100%)'
+            background: 'linear-gradient(to bottom, rgba(5, 5, 5, 0.65) 0%, rgba(5, 5, 5, 0) 35%)'
           }}
         ></div>
 
-        {/* Subtle Side Vignette */}
+        {/* Bottom Fade - Blends to Dark Page */}
         <div
           className="absolute inset-0 pointer-events-none"
           style={{
-            background: 'radial-gradient(ellipse at center, transparent 40%, rgba(5, 5, 5, 0.15) 100%)'
+            background: 'linear-gradient(to bottom, rgba(5, 5, 5, 0) 40%, rgba(5, 5, 5, 0.65) 70%, rgba(5, 5, 5, 1) 100%)'
           }}
         ></div>
       </div>
 
-      {/* Desktop banner height override */}
-      <style>{`
-        @media (min-width: 1024px) {
-          .hero-banner {
-            height: clamp(520px, 68vh, 760px) !important;
-          }
-        }
-      `}</style>
-
-      {/* B) COPY SECTION (BELOW BANNER) - Centered, Longer Column */}
-      <div className="relative bg-background-dark py-14 lg:py-20 px-6">
-        <div className="max-w-6xl mx-auto">
+      {/* HERO_COPY: Centered Text Region Below Banner */}
+      <div className="relative bg-background-dark py-12 lg:py-20 px-6">
+        <div className="max-w-5xl mx-auto">
           <div className={`text-center transition-all duration-1000 transform ${isVisible ? 'translate-y-0 opacity-100' : 'translate-y-10 opacity-0'}`}>
-            {/* Phase Badge - Small & Subtle */}
-            <div className="mb-6 flex items-center gap-2.5 justify-center">
+            {/* Phase Badge */}
+            <div className="mb-6 lg:mb-8 flex items-center gap-2.5 justify-center">
               <img src={ASSETS.mascot} alt="KONG Mascot" className="w-9 h-9 rounded-full border-2 border-primary-cyan/80 p-0.5 object-cover" />
               <span className="text-[10px] tracking-[0.35em] text-primary-cyan uppercase font-bold">Phase 0</span>
             </div>
 
-            {/* H1 - Corrected Sizing */}
+            {/* H1 - Reduced Scale */}
             <h1
-              className="font-extrabold tracking-tight mb-8 lg:mb-10 text-white mx-auto max-w-5xl"
+              className="font-extrabold tracking-tight mb-8 lg:mb-10 text-white mx-auto max-w-4xl"
               style={{
-                fontSize: 'clamp(2.4rem, 9vw, 4.2rem)',
-                lineHeight: '0.95',
-                letterSpacing: '-0.03em'
+                fontSize: 'clamp(36px, 8vw, 44px)',
+                lineHeight: '0.98',
+                letterSpacing: '-0.025em'
               }}
             >
               {COPY.hero.h1}
@@ -104,8 +90,8 @@ const Hero: React.FC = () => {
             {/* Desktop H1 override */}
             <style>{`
               @media (min-width: 1024px) {
-                .hero-h1 {
-                  font-size: clamp(2.6rem, 4.8vw, 5.1rem) !important;
+                h1 {
+                  font-size: clamp(44px, 4.2vw, 64px) !important;
                 }
               }
             `}</style>
@@ -153,7 +139,7 @@ const Hero: React.FC = () => {
             </div>
 
             {/* Scroll Indicator */}
-            <div className="mt-20 flex justify-center">
+            <div className="mt-16 lg:mt-20 flex justify-center">
               <div className={`flex flex-col items-center gap-2.5 ${prefersReducedMotion ? '' : 'animate-bounce'}`}>
                 <span className="text-[10px] text-border uppercase tracking-[0.35em]">Scroll</span>
                 <svg className="w-4 h-4 text-primary-cyan" fill="none" stroke="currentColor" viewBox="0 0 24 24">
