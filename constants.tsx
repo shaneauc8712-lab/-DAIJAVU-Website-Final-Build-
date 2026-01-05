@@ -42,7 +42,7 @@ export const COPY = {
 export const ASSETS = {
   logoLockup: "/assets/logo-lockup.png",
   mascot: "/assets/mascot.png",
-  heroAnimation: "/assets/hero-animation.mp4",
+  heroAnimation: "/assets/kong-animation.mp4",
   wideVisual: "/assets/visual-strip.png",
 };
 
